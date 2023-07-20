@@ -53,17 +53,18 @@ for index, santri in enumerate(data):
         berkas_dibutuhkan.append(berkas6)
 
     # Menentukan pesan berdasarkan data calon santri
-    pesan = f"_Assalamu'alaikum Wr. Wb_\n\nSelamat sore Bapak/Ibu/Wali dari santri baru *{nama}*.\nSaya selaku admin dari Panitia Penerimaan Santri Baru (PSB) ingin menginformasikan bahwa *ada beberapa berkas yang harus dilengkapi untuk pendaftaran*, yaitu:\n\n"
+    pesan = f"_Assalamu'alaikum Wr. Wb_\n\nSelamat siang Bapak/Ibu/Wali dari santri baru *{nama}*.\nSaya selaku admin dari Panitia Penerimaan Santri Baru (PSB) Pondok Pesantren AL-Lathifah ingin menginformasikan bahwa ada beberapa berkas yang *harus dilengkapi untuk pendaftaran*, yaitu: \n"
+    pesan += f"\n"
 
     for berkas in berkas_dibutuhkan:
         pesan += f"- *{berkas}*\n"
 
-    pesan += "\nHarap agar bisa dikumpulkan *hari ini*, paling lambat *hari Minggu, 24 Juli 2023* (berkasnya sementara bisa difotokan terlebih dahulu untuk penginputan datanya).\nJika rumah Bapak/Ibu jauh dari pondok pesantren, berkas dapat dikirim via ekspedisi.\n\nTerima kasih.\n_Wassalamu'alaikum Wr. Wb_"
+    pesan += "\nHarap agar bisa dikumpulkan *hari ini*, paling lambat *hari Ahad, 24 Juli 2023* (berkasnya sementara bisa difotokan terlebih dahulu untuk penginputan datanya).\nJika rumah Bapak/Ibu jauh dari pondok pesantren, berkas dapat dikirim via ekspedisi.\n\nTerima kasih.\n_Wassalamu'alaikum Wr. Wb_"
 
     for nomor in nomor_hp:
         try:
             # Mengirim pesan WhatsApp pada jam sekarang ke setiap nomor HP
-            pywhatkit.sendwhatmsg_instantly(nomor, pesan, 15, True, 10)
+            pywhatkit.sendwhatmsg_instantly(nomor, pesan, 20, True, 15)
             print(f"Message sent to {nama} | {nomor}.")
         except pywhatkit.exceptions.CountryCodeException:
             print(f"Failed to send message to {nama} | {nomor}. The number is not registered on WhatsApp.")
@@ -75,4 +76,4 @@ for index, santri in enumerate(data):
 
     # Jeda waktu sebelum pengiriman pesan berikutnya
     if index < len(data) - 1:
-        time.sleep(15)  # Ubah waktu jeda sesuai kebutuhan Anda
+        time.sleep(10)  # Ubah waktu jeda sesuai kebutuhan Anda
