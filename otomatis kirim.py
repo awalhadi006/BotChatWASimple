@@ -13,7 +13,7 @@ def import_data(filename):
     return data
 
 # Import data calon santri dari file CSV
-data = import_data('testing.csv')
+data = import_data('data_santri.csv')
 
 # Loop melalui data calon santri
 for index, santri in enumerate(data):
@@ -64,7 +64,7 @@ for index, santri in enumerate(data):
     for nomor in nomor_hp:
         try:
             # Mengirim pesan WhatsApp pada jam sekarang ke setiap nomor HP
-            pywhatkit.sendwhatmsg_instantly(nomor, pesan, 20, True, 15)
+            pywhatkit.sendwhatmsg_instantly(nomor, pesan, 15, True, 5)
             print(f"Message sent to {nama} | {nomor}.")
         except pywhatkit.exceptions.CountryCodeException:
             print(f"Failed to send message to {nama} | {nomor}. The number is not registered on WhatsApp.")
@@ -72,8 +72,9 @@ for index, santri in enumerate(data):
             print(f"Failed to send message to {nama} | {nomor}. Error: {str(e)}")
 
         # Menunggu beberapa saat sebelum mengirim pesan ke nomor selanjutnya
-        time.sleep(10)
+        time.sleep(5)
 
     # Jeda waktu sebelum pengiriman pesan berikutnya
     if index < len(data) - 1:
-        time.sleep(10)  # Ubah waktu jeda sesuai kebutuhan Anda
+        time.sleep(10
+        )  # Ubah waktu jeda sesuai kebutuhan Anda
